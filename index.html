@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-<title>Colonial America Mock-Gov SAT Exam</title>
+<title>Colonial America Mock-Gov Bar Exam</title>
 <style>
 :root {
   --bg: #0f1724;
@@ -17,255 +17,506 @@
   --wrong: #dc2626;
 }
 * { box-sizing: border-box; }
-html, body { margin:0; padding:0; background: var(--bg); color:white; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size:18px;}
-body { display:flex; align-items:center; justify-content:center; min-height:100vh; padding:20px;}
-.card { background: var(--panel); width:100%; max-width:650px; border-radius:14px; padding:24px; box-shadow:0 6px 30px rgba(0,0,0,0.6); overflow-y:auto; max-height:90vh; position:relative;}
-h2 { text-align:center; margin:0 0 16px 0; font-size:1.6rem;}
-.question { margin-bottom:22px;}
-.question h3 { margin-bottom:10px; font-size:1.1rem;}
-label { display:block; margin-bottom:6px; background: var(--input-bg); padding:10px; border-radius:8px; cursor:pointer; border:1px solid #24324a; transition: background 0.2s, border-color 0.2s;}
-input[type="radio"] { margin-right:8px;}
-label:hover { background:#16223b; border-color: var(--accent);}
-.correct { border-color: var(--correct); background: rgba(22,163,74,0.15);}
-.wrong { border-color: var(--wrong); background: rgba(220,38,38,0.15);}
-.buttons { display:flex; gap:12px; justify-content:center; margin-top:16px;}
-button { flex:1; background: var(--accent); color:white; border:none; border-radius:10px; padding:14px; font-size:1.05rem; font-weight:600; cursor:pointer; transition: background 0.2s;}
-button:hover { background: var(--accent-hover);}
-button.secondary { background: var(--secondary);}
-button.secondary:hover { background: var(--secondary-hover);}
-.result { text-align:center; margin-top:18px; font-weight:bold;}
-.summary-box { margin-top:16px; background: var(--input-bg); border-radius:10px; padding:12px; border:1px solid #24324a; font-size:0.95rem; white-space: pre-line;}
-.locked { text-align:center; padding:20px; margin-bottom:12px; border-radius:10px; background: var(--input-bg); border:1px solid #24324a;}
-.popup-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:flex; align-items:center; justify-content:center; z-index:1000;}
-.popup { background:var(--panel); padding:24px; border-radius:14px; max-width:400px; width:90%; text-align:center;}
-.popup input { width:80%; padding:10px; margin:12px 0; border-radius:8px; border:1px solid #24324a; background: var(--input-bg); color:white; font-size:1rem;}
-.popup button { padding:10px 16px; margin-top:10px; font-size:1rem; border:none; border-radius:8px; cursor:pointer; background:var(--accent); color:white;}
-.popup button:hover { background:var(--accent-hover);}
-@media (max-width:400px) { html, body{font-size:17px;} h2{font-size:1.4rem;} button{font-size:1rem; padding:12px;} .popup input{width:100%;} }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 18px;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+.card {
+  background: var(--panel);
+  width: 100%;
+  max-width: 700px;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+  overflow-y: auto;
+  max-height: 90vh;
+}
+h2 {
+  text-align: center;
+  margin: 0 0 16px 0;
+  font-size: 1.6rem;
+}
+h3.section {
+  text-align: center;
+  margin: 28px 0 14px 0;
+  font-size: 1.3rem;
+  border-bottom: 1px solid #2b3550;
+  padding-bottom: 6px;
+}
+.question {
+  margin-bottom: 22px;
+}
+.question h4 {
+  margin-bottom: 6px;
+  font-size: 1.05rem;
+}
+.question .points {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 6px;
+}
+label {
+  display: block;
+  margin-bottom: 6px;
+  background: var(--input-bg);
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid #24324a;
+  transition: background 0.2s, border-color 0.2s;
+}
+input[type="radio"] { margin-right: 8px; }
+label:hover { background: #16223b; border-color: var(--accent); }
+.correct { border-color: var(--correct); background: rgba(22,163,74,0.15); }
+.wrong { border-color: var(--wrong); background: rgba(220,38,38,0.15); }
+.buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+}
+button {
+  flex: 1;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover { background: var(--accent-hover); }
+button.secondary { background: var(--secondary); }
+button.secondary:hover { background: var(--secondary-hover); }
+.result {
+  text-align: center;
+  margin-top: 18px;
+  font-weight: bold;
+}
+.summary-box {
+  margin-top: 16px;
+  background: var(--input-bg);
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid #24324a;
+  font-size: 0.95rem;
+  white-space: pre-line;
+  position: relative;
+}
+.summary-credit {
+  text-align: center;
+  opacity: 0.4;
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+.locked {
+  text-align: center;
+  padding: 30px;
+  font-size: 1.1rem;
+}
 </style>
 </head>
 <body>
-
-<div class="popup-overlay" id="usernamePopup">
-  <div class="popup">
-    <h3>Enter your Discord username</h3>
-    <input type="text" id="usernameInput" placeholder="e.g. User#1234">
-    <button id="continueBtn">Continue</button>
-  </div>
+<div class="card">
+<h2>1790s Fictional Bar Exam</h2>
+<div id="lockedMessage" class="locked" style="display:none;">
+  You have already completed the exam.<br><br>
+  To retake it, you must receive permission from the Chief Justice.<br><br>
+  <button id="unlockBtn">Enter Permission Code</button>
 </div>
 
-<div class="card" id="card" style="display:none;">
-  <h2>Colonial America Mock-Gov SAT Exam</h2>
+<form id="quizForm">
 
-  <div class="locked" id="lockedMessage" style="display:none;">
-    You have already completed the exam.<br><br>
-    To retake it, you must receive permission from the Chief Justice.<br><br>
-    <input type="text" id="accessCode" placeholder="Enter permission code">
-    <button id="unlockBtn">Unlock Exam</button>
-  </div>
+<!-- SECTION 1 -->
+<h3 class="section">I. General Law (Questions 1–10)</h3>
+<!-- Q1–Q10 -->
+<div class="question" data-answer="C" data-points="12">
+<h4>1. Which of the following best defines “civil law”?</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q1" value="A">A) Law governing crimes and punishments</label>
+<label><input type="radio" name="q1" value="B">B) Law enforced by the military</label>
+<label><input type="radio" name="q1" value="C">C) Law governing disputes between private parties</label>
+<label><input type="radio" name="q1" value="D">D) Law issued directly by the monarch</label>
+</div>
 
-  <form id="quizForm" style="display:none;">
-    <!-- 15 Questions about 1790s America -->
-    <div class="question" data-answer="A">
-      <h3>1. In 1791, a farmer in Pennsylvania refuses to pay a federal excise tax on whiskey. What legal issue arises?</h3>
-      <label><input type="radio" name="q1" value="A">A) Breach of federal law</label>
-      <label><input type="radio" name="q1" value="B">B) Treason</label>
-      <label><input type="radio" name="q1" value="C">C) Libel</label>
-      <label><input type="radio" name="q1" value="D">D) Negligence</label>
-    </div>
+<div class="question" data-answer="A" data-points="14">
+<h4>2. A contract requires “consideration” to be valid. What is consideration?</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q2" value="A">A) Something of value exchanged between parties</label>
+<label><input type="radio" name="q2" value="B">B) An agreement witnessed by two people</label>
+<label><input type="radio" name="q2" value="C">C) A written seal on a document</label>
+<label><input type="radio" name="q2" value="D">D) An official court record</label>
+</div>
 
-    <div class="question" data-answer="A">
-      <h3>2. A newspaper criticizes President Washington’s policies. Which legal defense protects the printer?</h3>
-      <label><input type="radio" name="q2" value="A">A) Freedom of the press</label>
-      <label><input type="radio" name="q2" value="B">B) Habeas corpus</label>
-      <label><input type="radio" name="q2" value="C">C) Trial by jury</label>
-      <label><input type="radio" name="q2" value="D">D) Presidential pardon</label>
-    </div>
+<div class="question" data-answer="B" data-points="12">
+<h4>3. “Negligence” occurs when a person:</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q3" value="A">A) Intentionally harms another</label>
+<label><input type="radio" name="q3" value="B">B) Fails to exercise reasonable care</label>
+<label><input type="radio" name="q3" value="C">C) Disagrees with a law</label>
+<label><input type="radio" name="q3" value="D">D) Breaches a contract</label>
+</div>
 
-    <div class="question" data-answer="B">
-      <h3>3. A citizen is accused of counterfeiting federal money. What type of case is this?</h3>
-      <label><input type="radio" name="q3" value="A">A) Civil case</label>
-      <label><input type="radio" name="q3" value="B">B) Criminal case</label>
-      <label><input type="radio" name="q3" value="C">C) Local dispute</label>
-      <label><input type="radio" name="q3" value="D">D) Admiralty case</label>
-    </div>
+<div class="question" data-answer="D" data-points="14">
+<h4>4. The burden of proof in a criminal case lies with:</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q4" value="A">A) The defendant</label>
+<label><input type="radio" name="q4" value="B">B) The judge</label>
+<label><input type="radio" name="q4" value="C">C) The jury</label>
+<label><input type="radio" name="q4" value="D">D) The prosecution</label>
+</div>
 
-    <div class="question" data-answer="A">
-      <h3>4. A sailor in 1792 is unpaid after a voyage along the Eastern Seaboard. Which court handles the dispute?</h3>
-      <label><input type="radio" name="q4" value="A">A) Admiralty court</label>
-      <label><input type="radio" name="q4" value="B">B) State court</label>
-      <label><input type="radio" name="q4" value="C">C) Military tribunal</label>
-      <label><input type="radio" name="q4" value="D">D) Local assembly</label>
-    </div>
+<div class="question" data-answer="B" data-points="12">
+<h4>5. What is “common law”?</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q5" value="A">A) Statutes written by Congress</label>
+<label><input type="radio" name="q5" value="B">B) Law developed through court decisions</label>
+<label><input type="radio" name="q5" value="C">C) International treaties</label>
+<label><input type="radio" name="q5" value="D">D) Church law</label>
+</div>
 
-    <div class="question" data-answer="B">
-      <h3>5. Congress passes a law taxing imported goods in 1790. Who can challenge or veto it?</h3>
-      <label><input type="radio" name="q5" value="A">A) State governor</label>
-      <label><input type="radio" name="q5" value="B">B) President</label>
-      <label><input type="radio" name="q5" value="C">C) Supreme Court</label>
-      <label><input type="radio" name="q5" value="D">D) Local sheriff</label>
-    </div>
+<div class="question" data-answer="A" data-points="14">
+<h4>6. “Due process” ensures that:</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q6" value="A">A) The government follows fair legal procedures</label>
+<label><input type="radio" name="q6" value="B">B) All laws are rewritten annually</label>
+<label><input type="radio" name="q6" value="C">C) Only juries can make laws</label>
+<label><input type="radio" name="q6" value="D">D) Judges serve for life</label>
+</div>
 
-    <div class="question" data-answer="B">
-      <h3>6. A person is accused of plotting against the federal government in the 1790s. This is called?</h3>
-      <label><input type="radio" name="q6" value="A">A) Tax evasion</label>
-      <label><input type="radio" name="q6" value="B">B) Sedition</label>
-      <label><input type="radio" name="q6" value="C">C) Smuggling</label>
-      <label><input type="radio" name="q6" value="D">D) Contempt</label>
-    </div>
+<div class="question" data-answer="C" data-points="12">
+<h4>7. The legal term “precedent” refers to:</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q7" value="A">A) A jury’s final decision</label>
+<label><input type="radio" name="q7" value="B">B) An executive order</label>
+<label><input type="radio" name="q7" value="C">C) A prior court ruling that guides future cases</label>
+<label><input type="radio" name="q7" value="D">D) A presidential veto</label>
+</div>
 
-    <div class="question" data-answer="C">
-      <h3>7. A printer sues for unpaid pamphlets for a political party. Which principle applies?</h3>
-      <label><input type="radio" name="q7" value="A">A) Habeas corpus</label>
-      <label><input type="radio" name="q7" value="B">B) Due process</label>
-      <label><input type="radio" name="q7" value="C">C) Contract law</label>
-      <label><input type="radio" name="q7" value="D">D) Natural rights</label>
-    </div>
+<div class="question" data-answer="B" data-points="14">
+<h4>8. A tort involves:</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q8" value="A">A) Breach of a contract</label>
+<label><input type="radio" name="q8" value="B">B) A civil wrong causing harm to another</label>
+<label><input type="radio" name="q8" value="C">C) A violation of criminal law</label>
+<label><input type="radio" name="q8" value="D">D) A trade dispute</label>
+</div>
 
-    <div class="question" data-answer="B">
-      <h3>8. A court orders a landowner to pay damages in 1795. The winner is called?</h3>
-      <label><input type="radio" name="q8" value="A">A) Defendant</label>
-      <label><input type="radio" name="q8" value="B">B) Plaintiff</label>
-      <label><input type="radio" name="q8" value="C">C) Magistrate</label>
-      <label><input type="radio" name="q8" value="D">D) Witness</label>
-    </div>
+<div class="question" data-answer="D" data-points="14">
+<h4>9. What is “jurisdiction”?</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q9" value="A">A) A jury’s verdict</label>
+<label><input type="radio" name="q9" value="B">B) The number of laws in a state</label>
+<label><input type="radio" name="q9" value="C">C) The oath taken by judges</label>
+<label><input type="radio" name="q9" value="D">D) The legal authority of a court to hear a case</label>
+</div>
 
-    <div class="question" data-answer="A">
-      <h3>9. A citizen is jailed without trial in the 1790s. Which principle is violated?</h3>
-      <label><input type="radio" name="q9" value="A">A) Habeas corpus</label>
-      <label><input type="radio" name="q9" value="B">B) Trial by jury</label>
-      <label><input type="radio" name="q9" value="C">C) Executive prerogative</label>
-      <label><input type="radio" name="q9" value="D">D) Taxation without representation</label>
-    </div>
+<div class="question" data-answer="C" data-points="12">
+<h4>10. What does “plaintiff” mean?</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q10" value="A">A) The judge presiding over a case</label>
+<label><input type="radio" name="q10" value="B">B) The defendant in a criminal trial</label>
+<label><input type="radio" name="q10" value="C">C) The person who brings a lawsuit</label>
+<label><input type="radio" name="q10" value="D">D) A court-appointed witness</label>
+</div>
 
-    <div class="question" data-answer="A">
-      <h3>10. A lawyer cites “life, liberty, and property” in 1790s arguments. Who inspired this?</h3>
-      <label><input type="radio" name="q10" value="A">A) John Locke</label>
-      <label><input type="radio" name="q10" value="B">B) Thomas Hobbes</label>
-      <label><input type="radio" name="q10" value="C">C) Montesquieu</label>
-      <label><input type="radio" name="q10" value="D">D) George Washington</label>
-    </div>
+<!-- SECTION 2 -->
+<h3 class="section">II. Supreme Court and Judicial System (Questions 11–20)</h3>
 
-    <div class="question" data-answer="C">
-      <h3>11. What is the main purpose of the Supreme Court in the 1790s?</h3>
-      <label><input type="radio" name="q11" value="A">A) To enforce taxes</label>
-      <label><input type="radio" name="q11" value="B">B) To write new laws</label>
-      <label><input type="radio" name="q11" value="C">C) To interpret laws and decide if they are constitutional</label>
-      <label><input type="radio" name="q11" value="D">D) To appoint governors</label>
-    </div>
+<div class="question" data-answer="B" data-points="14">
+<h4>11. The Supreme Court primarily exercises which power?</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q11" value="A">A) Making laws</label>
+<label><input type="radio" name="q11" value="B">B) Interpreting laws</label>
+<label><input type="radio" name="q11" value="C">C) Enforcing laws</label>
+<label><input type="radio" name="q11" value="D">D) Drafting amendments</label>
+</div>
 
-    <div class="question" data-answer="B">
-      <h3>12. Who represented the federal government in court during the 1790s?</h3>
-      <label><input type="radio" name="q12" value="A">A) Chief Justice</label>
-      <label><input type="radio" name="q12" value="B">B) Attorney General</label>
-      <label><input type="radio" name="q12" value="C">C) President</label>
-      <label><input type="radio" name="q12" value="D">D) State Governor</label>
-    </div>
+<div class="question" data-answer="C" data-points="14">
+<h4>12. Judicial review allows the Court to:</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q12" value="A">A) Rewrite acts of Congress</label>
+<label><input type="radio" name="q12" value="B">B) Enforce state laws</label>
+<label><input type="radio" name="q12" value="C">C) Declare laws unconstitutional</label>
+<label><input type="radio" name="q12" value="D">D) Overrule juries</label>
+</div>
 
-    <div class="question" data-answer="A">
-      <h3>13. A dispute arises between states over trade in 1795. Who decides?</h3>
-      <label><input type="radio" name="q13" value="A">A) Supreme Court</label>
-      <label><input type="radio" name="q13" value="B">B) President</label>
-      <label><input type="radio" name="q13" value="C">C) Governor</label>
-      <label><input type="radio" name="q13" value="D">D) Congress</label>
-    </div>
+<div class="question" data-answer="A" data-points="12">
+<h4>13. How many Justices serve on the U.S. Supreme Court by tradition?</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q13" value="A">A) Nine</label>
+<label><input type="radio" name="q13" value="B">B) Seven</label>
+<label><input type="radio" name="q13" value="C">C) Five</label>
+<label><input type="radio" name="q13" value="D">D) Eleven</label>
+</div>
 
-    <div class="question" data-answer="D">
-      <h3>14. If the Supreme Court declares a law “unconstitutional” in the 1790s, what does that mean?</h3>
-      <label><input type="radio" name="q14" value="A">A) Minor edits are needed</label>
-      <label><input type="radio" name="q14" value="B">B) The law was not approved by the President</label>
-      <label><input type="radio" name="q14" value="C">C) The law violates state customs</label>
-      <label><input type="radio" name="q14" value="D">D) The law conflicts with the Constitution and cannot be enforced</label>
-    </div>
+<div class="question" data-answer="B" data-points="14">
+<h4>14. A lower court’s decision can be:</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q14" value="A">A) Ignored by the Supreme Court</label>
+<label><input type="radio" name="q14" value="B">B) Appealed to the Supreme Court</label>
+<label><input type="radio" name="q14" value="C">C) Overruled by the President</label>
+<label><input type="radio" name="q14" value="D">D) Enforced by the legislature</label>
+</div>
 
-    <div class="question" data-answer="C">
-      <h3>15. The Attorney General gives legal advice to President Washington. This shows:</h3>
-      <label><input type="radio" name="q15" value="A">A) Legislative power</label>
-      <label><input type="radio" name="q15" value="B">B) Judicial review</label>
-      <label><input type="radio" name="q15" value="C">C) Chief legal advisor role</label>
-      <label><input type="radio" name="q15" value="D">D) Executive order</label>
-    </div>
-  </form>
+<div class="question" data-answer="C" data-points="12">
+<h4>15. Which principle requires courts to follow prior decisions?</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q15" value="A">A) Due process</label>
+<label><input type="radio" name="q15" value="B">B) Habeas corpus</label>
+<label><input type="radio" name="q15" value="C">C) Stare decisis</label>
+<label><input type="radio" name="q15" value="D">D) Res judicata</label>
+</div>
 
-  <div class="buttons">
-    <button type="button" id="check">Check Answers</button>
-  </div>
+<div class="question" data-answer="D" data-points="14">
+<h4>16. Which court has original jurisdiction over cases involving ambassadors?</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q16" value="A">A) District Court</label>
+<label><input type="radio" name="q16" value="B">B) Court of Appeals</label>
+<label><input type="radio" name="q16" value="C">C) State Supreme Court</label>
+<label><input type="radio" name="q16" value="D">D) U.S. Supreme Court</label>
+</div>
 
-  <div class="result" id="result"></div>
-  <div class="summary-box" id="summary" style="display:none;"></div>
+<div class="question" data-answer="A" data-points="12">
+<h4>17. Who nominates federal judges?</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q17" value="A">A) The President</label>
+<label><input type="radio" name="q17" value="B">B) Congress</label>
+<label><input type="radio" name="q17" value="C">C) The Attorney General</label>
+<label><input type="radio" name="q17" value="D">D) The Chief Justice</label>
+</div>
+
+<div class="question" data-answer="B" data-points="14">
+<h4>18. Senate confirmation is required for:</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q18" value="A">A) Supreme Court decisions</label>
+<label><input type="radio" name="q18" value="B">B) Presidential judicial nominations</label>
+<label><input type="radio" name="q18" value="C">C) Lower court verdicts</label>
+<label><input type="radio" name="q18" value="D">D) Passing federal laws</label>
+</div>
+
+<div class="question" data-answer="C" data-points="14">
+<h4>19. The concept of checks and balances:</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q19" value="A">A) Gives all power to the President</label>
+<label><input type="radio" name="q19" value="B">B) Eliminates the Supreme Court’s power</label>
+<label><input type="radio" name="q19" value="C">C) Ensures no branch becomes too powerful</label>
+<label><input type="radio" name="q19" value="D">D) Makes Congress supreme over the judiciary</label>
+</div>
+
+<div class="question" data-answer="D" data-points="12">
+<h4>20. Federal courts may review state court decisions if:</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q20" value="A">A) They involve state statutes only</label>
+<label><input type="radio" name="q20" value="B">B) The President requests review</label>
+<label><input type="radio" name="q20" value="C">C) Only for local ordinances</label>
+<label><input type="radio" name="q20" value="D">D) Federal law or constitutional issues are involved</label>
+</div>
+
+<!-- SECTION 3 -->
+<h3 class="section">III. Contracts and Property (Questions 21–30)</h3>
+
+<div class="question" data-answer="A" data-points="12">
+<h4>21. A valid contract requires which of the following elements?</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q21" value="A">A) Offer, acceptance, consideration</label>
+<label><input type="radio" name="q21" value="B">B) Signatures from two witnesses only</label>
+<label><input type="radio" name="q21" value="C">C) Judicial approval</label>
+<label><input type="radio" name="q21" value="D">D) A notarized seal</label>
+</div>
+
+<div class="question" data-answer="B" data-points="12">
+<h4>22. A leasehold estate gives the tenant:</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q22" value="A">A) Full ownership of the property</label>
+<label><input type="radio" name="q22" value="B">B) Right to use property for a set period</label>
+<label><input type="radio" name="q22" value="C">C) Only parking privileges</label>
+<label><input type="radio" name="q22" value="D">D) Voting rights in property decisions</label>
+</div>
+
+<div class="question" data-answer="C" data-points="14">
+<h4>23. Consideration must be:</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q23" value="A">A) Monetary only</label>
+<label><input type="radio" name="q23" value="B">B) Approved by a judge</label>
+<label><input type="radio" name="q23" value="C">C) Something of legal value exchanged</label>
+<label><input type="radio" name="q23" value="D">D) Written in a notarized document</label>
+</div>
+
+<div class="question" data-answer="D" data-points="14">
+<h4>24. Which of the following is an example of real property?</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q24" value="A">A) Stocks and bonds</label>
+<label><input type="radio" name="q24" value="B">B) Bank account</label>
+<label><input type="radio" name="q24" value="C">C) Car</label>
+<label><input type="radio" name="q24" value="D">D) Land and buildings</label>
+</div>
+
+<div class="question" data-answer="B" data-points="12">
+<h4>25. A void contract is:</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q25" value="A">A) One that can be enforced at the option of one party</label>
+<label><input type="radio" name="q25" value="B">B) Not legally enforceable from the start</label>
+<label><input type="radio" name="q25" value="C">C) Valid only if notarized</label>
+<label><input type="radio" name="q25" value="D">D) Enforceable in state courts only</label>
+</div>
+
+<div class="question" data-answer="C" data-points="12">
+<h4>26. Easements typically grant:</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q26" value="A">A) Ownership rights</label>
+<label><input type="radio" name="q26" value="B">B) Rental income</label>
+<label><input type="radio" name="q26" value="C">C) Right to use property of another</label>
+<label><input type="radio" name="q26" value="D">D) Voting power in property association</label>
+</div>
+
+<div class="question" data-answer="D" data-points="14">
+<h4>27. “Specific performance” in contract law means:</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q27" value="A">A) Monetary damages only</label>
+<label><input type="radio" name="q27" value="B">B) Void the contract</label>
+<label><input type="radio" name="q27" value="C">C) Arbitration</label>
+<label><input type="radio" name="q27" value="D">D) Court orders actual fulfillment of contract</label>
+</div>
+
+<div class="question" data-answer="A" data-points="12">
+<h4>28. A “lease” is a type of:</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q28" value="A">A) Contract</label>
+<label><input type="radio" name="q28" value="B">B) Warranty</label>
+<label><input type="radio" name="q28" value="C">C) Tort</label>
+<label><input type="radio" name="q28" value="D">D) Statute</label>
+</div>
+
+<div class="question" data-answer="B" data-points="12">
+<h4>29. Who holds legal title in a trust?</h4>
+<div class="points">Points: 12</div>
+<label><input type="radio" name="q29" value="A">A) Beneficiary only</label>
+<label><input type="radio" name="q29" value="B">B) Trustee</label>
+<label><input type="radio" name="q29" value="C">C) Grantor only</label>
+<label><input type="radio" name="q29" value="D">D) Court</label>
+</div>
+
+<div class="question" data-answer="C" data-points="14">
+<h4>30. Adverse possession allows:</h4>
+<div class="points">Points: 14</div>
+<label><input type="radio" name="q30" value="A">A) Immediate transfer of property to government</label>
+<label><input type="radio" name="q30" value="B">B) Buying property below market value</label>
+<label><input type="radio" name="q30" value="C">C) Gaining legal ownership by continuous possession</label>
+<label><input type="radio" name="q30" value="D">D) Eviction of tenants only</label>
+</div>
+
+</form>
+
+<div class="buttons">
+<button type="button" id="check">Check Answers</button>
+<button type="reset" class="secondary" id="resetBtn">Reset Quiz</button>
+</div>
+
+<div class="result" id="result"></div>
+<div class="summary-box" id="summary" style="display:none;">
+<div id="summaryText"></div>
+<div class="summary-credit">Exam created by c0llared_. Do not reproduce without permission.</div>
+</div>
 </div>
 
 <script>
-const usernamePopup = document.getElementById('usernamePopup');
-const continueBtn = document.getElementById('continueBtn');
-const usernameInput = document.getElementById('usernameInput');
+// Permission code
 const quizForm = document.getElementById('quizForm');
-const card = document.getElementById('card');
 const lockedMessage = document.getElementById('lockedMessage');
 const unlockBtn = document.getElementById('unlockBtn');
-const accessCodeInput = document.getElementById('accessCode');
-const permissionCode = "ALLOW1776";
+const permissionCode = "ALLOW1790";
 
-let username = "";
+// Point values
+const questionScores = [
+12,14,12,14,12,14,12,14,14,12, // Q1–Q10
+14,14,12,14,12,14,12,14,14,12, // Q11–Q20
+12,12,14,14,12,12,14,12,12,14  // Q21–Q30
+];
 
-continueBtn.addEventListener('click', () => {
-  const name = usernameInput.value.trim();
-  if(name === "") { alert("Please enter your Discord username."); return; }
-  username = name;
-  usernamePopup.style.display = "none";
+const passingScore = 340;
+const totalScore = questionScores.reduce((a,b)=>a+b,0);
 
-  card.style.display = "block";
-  if(localStorage.getItem('barExamTaken') === 'true') {
-    lockedMessage.style.display = "block";
-  } else {
-    quizForm.style.display = "block";
-  }
-});
+if (localStorage.getItem('barExamTaken') === 'true') {
+quizForm.style.display = 'none';
+document.querySelector('.buttons').style.display = 'none';
+lockedMessage.style.display = 'block';
+}
 
 unlockBtn.addEventListener('click', () => {
-  if(accessCodeInput.value === permissionCode) {
-    localStorage.removeItem('barExamTaken');
-    location.reload();
-  } else {
-    alert("Incorrect code. Permission denied.");
-  }
+const entered = prompt("Enter the permission code from the Chief Justice:");
+if (entered === permissionCode) {
+localStorage.removeItem('barExamTaken');
+location.reload();
+} else {
+alert("Incorrect code. Permission denied.");
+}
 });
 
 document.getElementById('check').addEventListener('click', () => {
-  const questions = document.querySelectorAll('.question');
-  let score = 0;
-  const results = [];
-  questions.forEach((q,i)=>{
-    const answer = q.dataset.answer;
-    const labels = q.querySelectorAll('label');
-    labels.forEach(l=>l.classList.remove('correct','wrong'));
-    const selected = q.querySelector('input[type="radio"]:checked');
-    if(selected){
-      if(selected.value === answer){
-        score++;
-        selected.parentElement.classList.add('correct');
-        results.push(`Q${i+1}: ✅ Correct`);
-      } else {
-        selected.parentElement.classList.add('wrong');
-        q.querySelector(`input[value="${answer}"]`).parentElement.classList.add('correct');
-        results.push(`Q${i+1}: ❌ Incorrect`);
-      }
-    } else {
-      q.querySelector(`input[value="${answer}"]`).parentElement.classList.add('correct');
-      results.push(`Q${i+1}: ❌ Not answered`);
-    }
-  });
+const questions = document.querySelectorAll('.question');
+let score = 0;
+const results = [];
 
-  const total = questions.length;
-  const passed = score >= 11;
-  document.getElementById('result').textContent = passed 
-    ? `✅ You passed the Colonial America Mock-Gov SAT Exam! (${score}/${total})`
-    : `❌ You failed the Colonial America Mock-Gov SAT Exam. (${score}/${total})`;
+questions.forEach((q, i) => {
+const answer = q.dataset.answer;
+const points = parseInt(q.dataset.points);
+const labels = q.querySelectorAll('label');
+labels.forEach(l => l.classList.remove('correct', 'wrong'));
+const selected = q.querySelector('input[type="radio"]:checked');
 
-  const summaryBox = document.getElementById('summary');
-  summaryBox.style.display = "block";
-  summaryBox.textContent = `Username: ${username}\n` + results.join("\n") + "\n\nScreenshot and send to the Chief Justice.";
-  localStorage.setItem('barExamTaken','true');
+if (selected) {
+if (selected.value === answer) {
+score += points;
+selected.parentElement.classList.add('correct');
+results.push(`Q${i+1}: ✅ Correct (+${points} pts)`);
+} else {
+selected.parentElement.classList.add('wrong');
+q.querySelector(`input[value="${answer}"]`).parentElement.classList.add('correct');
+results.push(`Q${i+1}: ❌ Incorrect (0 pts, correct: +${points} pts)`);
+}
+} else {
+q.querySelector(`input[value="${answer}"]`).parentElement.classList.add('correct');
+results.push(`Q${i+1}: ❌ Not answered (0 pts, correct: +${points} pts)`);
+}
+});
+
+const passed = score >= passingScore;
+const percentage = ((score / totalScore) * 100).toFixed(1);
+const resultBox = document.getElementById('result');
+const summaryBox = document.getElementById('summary');
+const summaryText = document.getElementById('summaryText');
+
+resultBox.textContent = passed
+? `✅ You passed the Colonial America Mock-Gov SAT Exam! (${score}/${totalScore} pts, ${percentage}%)`
+: `❌ You failed the Colonial America Mock-Gov SAT Exam. (${score}/${totalScore} pts, ${percentage}%)`;
+
+summaryBox.style.display = 'block';
+summaryText.textContent =
+results.join('\n') +
+`\n\n📜 Please take a screenshot of this summary and send it to the Chief Justice of the Supreme Court for proof.`;
+
+localStorage.setItem('barExamTaken', 'true');
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+document.getElementById('result').textContent = '';
+document.getElementById('summaryText').textContent = '';
+document.getElementById('summary').style.display = 'none';
+document.querySelectorAll('label').forEach(l => l.classList.remove('correct','wrong'));
 });
 </script>
 </body>
