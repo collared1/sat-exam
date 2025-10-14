@@ -185,12 +185,10 @@ button.secondary:hover { background: var(--secondary-hover);}
       <label><input type="radio" name="q15" value="C">C) Chief legal advisor role</label>
       <label><input type="radio" name="q15" value="D">D) Executive order</label>
     </div>
-
   </form>
 
   <div class="buttons">
     <button type="button" id="check">Check Answers</button>
-    <button type="reset" class="secondary" id="resetBtn">Reset Quiz</button>
   </div>
 
   <div class="result" id="result"></div>
@@ -206,7 +204,7 @@ const card = document.getElementById('card');
 const lockedMessage = document.getElementById('lockedMessage');
 const unlockBtn = document.getElementById('unlockBtn');
 const accessCodeInput = document.getElementById('accessCode');
-const permissionCode = "ALLOW1776"; // Change as needed
+const permissionCode = "ALLOW1776";
 
 let username = "";
 
@@ -267,14 +265,7 @@ document.getElementById('check').addEventListener('click', () => {
   const summaryBox = document.getElementById('summary');
   summaryBox.style.display = "block";
   summaryBox.textContent = `Username: ${username}\n` + results.join("\n") + "\n\nScreenshot and send to the Chief Justice.";
-
   localStorage.setItem('barExamTaken','true');
-});
-
-document.getElementById('resetBtn').addEventListener('click', () => {
-  document.querySelectorAll('label').forEach(l=>l.classList.remove('correct','wrong'));
-  document.getElementById('result').textContent = "";
-  document.getElementById('summary').style.display = "none";
 });
 </script>
 </body>
