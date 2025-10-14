@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>Colonial America Mock-Gov SAT Exam</title>
+<style>
+  :root {
+    --bg: #0f1724;
+    --panel: #1a2437;
+    --input-bg: #111a2b;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --secondary: #374151;
+    --secondary-hover: #4b5563;
+    --correct: #16a34a;
+    --wrong: #dc2626;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background: var(--bg); color:white; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size:18px;}
+  body { display:flex; align-items:center; justify-content:center; min-height:100vh; padding:20px;}
+  .card { background: var(--panel); width:100%; max-width:650px; border-radius:14px; padding:24px; box-shadow:0 6px 30px rgba(0,0,0,0.6); overflow-y:auto; max-height:90vh; position:relative;}
+  h2 { text-align:center; margin:0 0 16px 0; font-size:1.6rem;}
+  .question { margin-bottom:22px;}
+  .question h3 { margin-bottom:10px; font-size:1.1rem;}
+  label { display:block; margin-bottom:6px; background: var(--input-bg); padding:10px; border-radius:8px; cursor:pointer; border:1px solid #24324a; transition: background 0.2s, border-color 0.2s;}
+  input[type="radio"] { margin-right:8px;}
+  label:hover { background:#16223b; border-color: var(--accent);}
+  .correct { border-color: var(--correct); background: rgba(22,163,74,0.15);}
+  .wrong { border-color: var(--wrong); background: rgba(220,38,38,0.15);}
+  .buttons { display:flex; gap:12px; justify-content:center; margin-top:16px;}
+  button { flex:1; background: var(--accent); color:white; border:none; border-radius:10px; padding:14px; font-size:1.05rem; font-weight:600; cursor:pointer; transition: background 0.2s;}
+  button:hover { background: var(--accent-hover);}
+  button.secondary { background: var(--secondary);}
+  button.secondary:hover { background: var(--secondary-hover);}
+  .result { text-align:center; margin-top:18px; font-weight:bold;}
+  .summary-box { margin-top:16px; background: var(--input-bg); border-radius:10px; padding:12px; border:1px solid #24324a; font-size:0.95rem; white-space: pre-line;}
+  .locked { text-align:center; padding:20px; margin-bottom:12px; border-radius:10px; background: var(--input-bg); border:1px solid #24324a;}
+  .popup-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:flex; align-items:center; justify-content:center; z-index:1000;}
+  .popup { background:var(--panel); padding:24px; border-radius:14px; max-width:400px; width:90%; text-align:center;}
+  .popup input { width:80%; padding:10px; margin:12px 0; border-radius:8px; border:1px solid #24324a; background: var(--input-bg); color:white; font-size:1rem;}
+  .popup button { padding:10px 16px; margin-top:10px; font-size:1rem; border:none; border-radius:8px; cursor:pointer; background:var(--accent); color:white;}
+  .popup button:hover { background:var(--accent-hover);}
+  @media (max-width:400px) { html, body{font-size:17px;} h2{font-size:1.4rem;} button{font-size:1rem; padding:12px;} .popup input{width:100%;} }
+</style>
+</head>
+<body>
+
+<div class="popup-overlay" id="usernamePopup">
+  <div class="popup">
+    <h3>Enter your Discord username</h3>
+    <input type="text" id="usernameInput" placeholder="e.g. User#1234">
+    <button id="continueBtn">Continue</button>
+  </div>
+</div>
+
+<div class="card" id="card" style="display:none;">
+  <h2>Colonial America Mock-Gov SAT Exam</h2>
+
+  <div class="locked" id="lockedMessage" style="display:none;">
+    You have already completed the exam.<br><br>
+    To retake it, you must receive permission from the Chief Justice.<br><br>
+    <input type="text" id="accessCode" placeholder="Enter permission code">
+    <button id="unlockBtn">Unlock Exam</button>
+  </div>
+
+  <form id="quizForm" style="display:none;">
+    <!-- Questions 1-15 go here -->
+  </form>
+
+  <div class="buttons">
+    <button type="button" id="check">Check Answers</button>
+    <button type="reset" class="secondary" id="resetBtn">Reset Quiz</button>
+  </div>
+
+  <div class="result" id="result"></div>
+  <div class="summary-box" id="summary" style="display:none;"></div>
+</div>
+
+<script>
+const usernamePopup = document.getElementById('usernamePopup');
+const usernameInput = document.getElementById('usernameInput');
+const continueBtn = document.getElementById('continueBtn');
+const card = document.getElementById('card');
+const lockedMessage = document.getElementById('lockedMessage');
+const quizForm = document.getElementById('quizForm');
+const unlockBtn = document.getElementById('unlockBtn');
+const accessCodeInput = document.getElementById('accessCode');
+let username = '';
+
+function showQuiz(){
+  quizForm.style.display='block';
+  card.style.display='block';
+  lockedMessage.style.display='none';
+}
+
+continueBtn.addEventListener('click', ()=>{
+  username = usernameInput.value.trim();
+  if(!username){ alert('Please enter your username.'); return; }
+  usernamePopup.style.display='none';
+  if(localStorage.getItem('quizTaken_'+username) === 'true'){
+    lockedMessage.style.display='block';
+    card.style.display='block';
+  } else {
+    showQuiz();
+  }
+});
+
+unlockBtn.addEventListener('click', ()=>{
+  const code = accessCodeInput.value.trim();
+  if(code==='SECRET123'){ showQuiz(); } 
+  else { alert('Incorrect permission code.'); }
+});
+</script>
+
+</body>
+</html>
